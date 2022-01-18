@@ -1,3 +1,7 @@
 error.txt
 /logs
+<<<<<<< HEAD
 .idea/
+=======
+.idea
+>>>>>>> branch1
