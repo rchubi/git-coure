@@ -6,3 +6,4 @@ I would want to learn this more quickly.
 Its on english, so some difficult.
 go on english course
 test git cherry-pick
+looks good
