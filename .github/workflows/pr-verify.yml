@@ -1,0 +1,15 @@
+name: PR verify
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile -t bogggard/hello-world:$(date +%s) -t bogggard/hello-world:latest -t bogggard/hello-world:v1.0
