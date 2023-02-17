@@ -8,7 +8,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    environment: qa
+    environment: stage
 
     steps:
       - uses: actions/checkout@v3
