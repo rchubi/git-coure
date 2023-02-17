@@ -1,9 +1,0 @@
-what is here ?
-i am learning git
-What do you have success?
-not very good
-I would want to learn this more quickly.
-Its on english, so some difficult.
-go on english course
-test git cherry-pick
-looks good
