@@ -26,7 +26,7 @@ jobs:
 
       - name:
         id: push-image
-        run: docker push bogggard/hello-world:v1.0
+        run: docker push bogggard/hello-world
 
 
 
