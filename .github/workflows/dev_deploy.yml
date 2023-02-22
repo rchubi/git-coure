@@ -26,8 +26,6 @@ jobs:
 
       - name:
         id: push-image
-        env:
-          IMAGE_BIULD: ${{ steps.build-image.outputs.image-base }}
         run: docker push bogggard/hello-world:v1.0 -all-tags
 
 
