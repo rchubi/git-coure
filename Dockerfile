@@ -1,8 +1,7 @@
 FROM python:latest
 
 RUN apt-get update && \
-    apt-get install -y && \
-    pip install --upgrade pip
+    apt-get install -y
 RUN mkdir -p project/src/ && \
     useradd -m -s /bin/bash menti
 
@@ -14,7 +13,8 @@ COPY /src/* /project/src
 COPY requirements.txt /project/requirements.txt
 
 WORKDIR /project/
-RUN pip3 install -r requirements.txt
+RUN pip install --upgrade pip && \
+    pip3 install -r requirements.txt
 
 #COPY . /usr/src/app/
 EXPOSE 8080
