@@ -24,7 +24,7 @@ jobs:
         id: build-image
         run: docker build . --file Dockerfile -t bogggard/hello-world:$(date +%s) -t bogggard/hello-world:latest -t bogggard/hello-world:v1.0
 
-      - name:
+      - name: Push to Docker Hub
         id: push-image
         run: docker push bogggard/hello-world
 
