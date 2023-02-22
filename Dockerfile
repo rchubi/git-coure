@@ -1,13 +1,18 @@
-FROM python:3.6
+FROM python:latest
 
-COPY . /usr/src/app/
-WORKDIR /usr/src/app
+RUN apt-get update && \
+    apt-get install -y && \
+    pip install --upgrade pip
+RUN mkdir -p project/src/
 
-RUN pip install --upgrade pip && \
-    mkdir -p /usr/src/app/ && \
-    pip install --no-cache-dir -r requirements.txt
+COPY /src/* /project/src
+COPY requirements.txt /project/requirements.txt
 
+WORKDIR /project/
 
+RUN pip3 install -r requirements.txt
+
+#COPY . /usr/src/app/
 EXPOSE 8080
-
+#CMD ["src/app.py"]
 CMD ["python", "src/app.py"]

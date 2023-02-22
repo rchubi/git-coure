@@ -2,6 +2,7 @@ import os
 import datetime
 from flask import Flask
 
+
 app = Flask(__name__)
 
 BASE_FOLDER = os.path.dirname(os.path.abspath(__file__))
