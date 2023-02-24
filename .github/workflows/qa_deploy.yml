@@ -8,6 +8,15 @@ on:
         required: true
         type: string
 
+      environment:
+        description: 'Environment'
+        required: true
+        type: choice
+        default: qa
+        options:
+          - qa
+          - prod
+
 jobs:
   release_depploy_qa:
     name: Deploy qa image to Docker Hub
