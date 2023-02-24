@@ -22,8 +22,8 @@ jobs:
 
       - name: Build the Docker image
         id: build-image
-        run: docker build . --file Dockerfile -t bogggard/hello-world:$(date +%s) -t bogggard/hello-world:latest -t bogggard/hello-world:v1.0
+        run: docker build . --file Dockerfile -t bogggard/hello-world:$(date +%s)-dev -t bogggard/hello-world:latest -t bogggard/hello-world:v1.0
 
       - name: Push to Docker Hub
         id: push-image
-        run: docker push bogggard/hello-world:$(date +%s) && docker push bogggard/hello-world:latest && docker push bogggard/hello-world:v1.0
+        run: docker push bogggard/hello-world

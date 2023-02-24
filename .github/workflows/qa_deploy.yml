@@ -30,4 +30,4 @@ jobs:
 
       - name: Push to Docker Hub
         id: push-image
-        run: docker push bogggard/hello-world:$(date +%s) && docker push bogggard/hello-world:latest && docker push bogggard/hello-world:v1.0
+        run: docker push bogggard/hello-world
