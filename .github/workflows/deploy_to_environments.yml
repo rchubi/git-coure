@@ -1,4 +1,4 @@
-name: QA Deployment
+name: Deployment to Environments
 
 on:
   workflow_dispatch:
@@ -8,11 +8,22 @@ on:
         required: true
         type: string
 
+      environment:
+        description: 'Environment'
+        required: true
+        type: choice
+        default: qa
+        options:
+          - dev
+          - qa
+          - staging
+          - prod
+
 jobs:
-  release_depploy_qa:
-    name: Deploy qa image to Docker Hub
+  deploy:
+    name: Deploy image to Docker Hub
     runs-on: ubuntu-latest
-    environment: qa
+    environment: $(environment)
 
     steps:
       - name: Check out the repo
@@ -26,8 +37,8 @@ jobs:
 
       - name: Build the Docker image
         id: build-image
-        run: docker build . --file Dockerfile -t bogggard/hello-world:$(date +%s)-qa
+        run: docker build . --file Dockerfile -t bogggard/hello-world:$(date +%s)-$(environment)
 
       - name: Push to Docker Hub
         id: push-image
-        run: docker push bogggard/hello-world-qa
+        run: docker push bogggard/hello-world-$(environment)
