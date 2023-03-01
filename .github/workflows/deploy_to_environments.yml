@@ -11,13 +11,8 @@ on:
       environment:
         description: 'Environment'
         required: true
-        type: choice
+        type: environment
         default: dev
-        options:
-          - dev
-          - qa
-          - staging
-          - prod
 
 jobs:
   deploy:
@@ -28,6 +23,15 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
+
+      - name: Notify about start deploy ${{ inputs.environment }}
+        id: notify_start
+        uses: slack/webhook@v3.4.0
+        env:
+          SLACK_CHANNEL: Roman Chubinskyi
+          SLACK_MESSAGE: 'Start release ' ${{ inputs.release_number }} 'to' ${{ inputs.environment }}
+          SLACK_USERNAME: rtCamp
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
