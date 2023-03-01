@@ -11,8 +11,13 @@ on:
       environment:
         description: 'Environment'
         required: true
-        type: environment
+        type: choice
         default: dev
+        options:
+          - dev
+          - qa
+          - staging
+          - prod
 
 jobs:
   deploy:
