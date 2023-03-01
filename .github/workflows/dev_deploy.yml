@@ -26,4 +26,4 @@ jobs:
 
       - name: Push to Docker Hub
         id: push-image
-        run: docker push bogggard/hello-world:dev
+        run: docker push --all-tags bogggard/hello-world
