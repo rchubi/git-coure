@@ -17,7 +17,7 @@ on:
           - dev
           - qa
           - staging
-          - prod
+          - USERNAME
 
 jobs:
   deploy:
@@ -35,9 +35,14 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - test: Test
+        id: test
+        env:
+          var: postgres-${{ inputs.environment }}-
+
       - name: Build the Docker image
         id: build-image
-        run: docker build . --file Dockerfile -t bogggard/hello-world:$(date +%s)-${{ inputs.environment }} -t bogggard/hello-world:latest -t bogggard/hello-world:${{ inputs.environment }}
+        run: docker build . --file Dockerfile -t bogggard/hello-world:$(date +%s)-${{ inputs.environment }} -t bogggard/hello-world:latest -t bogggard/hello-world:$var
 
       - name: Push to Docker Hub
         id: push-image
