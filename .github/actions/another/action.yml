@@ -11,7 +11,8 @@ runs:
 
   steps:
      - name: Get config
-       uses: git-coure/.github/actions/config/action.yml
+       id: config
+       uses: git-coure/.github/actions/config@master
 
      - name: Check out the repo
        uses: actions/checkout@v3
