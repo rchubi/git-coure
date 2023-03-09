@@ -24,8 +24,6 @@ jobs:
     name: Deploy image to Docker Hub
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
-    env:
-      VAR_ENVIRONMENT: inputs.environment
 
     steps:
       - name: Check out the repo
@@ -37,10 +35,16 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+
+      - name: Assign var
+        run:
+          echo "::set-output name=var_environment::${{environment}}"
+
+
       - name: Build the Docker image
         id: build-image
         env:
-          var:  ${{ env.VAR_ENVIRONMENT }}
+          var:  $var_environment
         run: docker build . --file Dockerfile -t bogggard/hello-world:$(date +%s)-${{ inputs.environment }} -t bogggard/hello-world:latest -t bogggard/hello-world:$var
 
       - name: Push to Docker Hub
