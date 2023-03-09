@@ -1,0 +1,22 @@
+name: 'Get Configs'
+description: "This file consists of config data"
+
+outputs:
+  ecs-cluster-dev:
+    description: 'Name of ECS DEV cluster'
+    value: 'Intelligo-Dev1'
+  ecs-cluster-qa:
+    description: 'Name of ECS QA cluster'
+    value: 'Intelligo-QA'
+  ecs-cluster-staging:
+    description: 'Name of ECS STAGING cluster'
+    value: 'Intelligo-Staging'
+  ecs-cluster-prod:
+    description: 'Name of ECS PROD cluster'
+    value: 'Intelligo-Production'
+
+runs:
+  using: composite
+  steps:
+    - run: echo "Initializng configs"
+      shell: bash

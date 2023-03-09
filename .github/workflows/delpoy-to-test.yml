@@ -1,0 +1,49 @@
+name: Deployment to Environments
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_number:
+        description: 'Release number (image tag) (i.e., v.6.0)'
+        required: true
+        type: string
+
+      environment:
+        description: 'Environment'
+        required: true
+        type: choice
+        default: dev
+        options:
+          - dev
+          - qa
+          - staging
+          - USERNAME
+
+jobs:
+  deploy:
+    name: Deploy image to Docker Hub
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - name: Get config
+        uses: git-coure/.github/actions/config/action.yml
+
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Take variables
+        id: take_variables
+        uses: git-coure/.github/actions/another/action.yml
+        with:
+          ecs-cluster: ${{ steps.config.outputs.ecs-cluster-dev }}
+
+      - name: Result
+        run:
+          echo " $ecs-cluster
