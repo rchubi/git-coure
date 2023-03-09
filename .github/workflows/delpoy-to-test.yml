@@ -38,11 +38,14 @@ jobs:
       - name: Get config
         id: config
         uses: rchubi/git-coure/.github/actions/config@master
+        env:
+          cluster_env: ecs-cluster-${{ inputs.environment }}
+        run: echo "ecs-cluster - cluster_env"
 
       - name: Take variables
         id: take_variables
         uses: rchubi/git-coure/.github/actions/check-test@master
         with:
-          ecs-cluster: ${{ steps.config.outputs.ecs-cluster-${{ inputs.environment }} }}
+          ecs-cluster: ${{ steps.config.outputs.ecs-cluster-$cluster_env }}
           aws-access-key-id: ${{ secrets.DOCKER_USERNAME }}
           aws-secret-access-key: ${{ secrets.DOCKER_PASSWORD }}
