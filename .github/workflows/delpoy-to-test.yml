@@ -27,6 +27,7 @@ jobs:
 
     steps:
       - name: Get config
+        id: config
         uses: rchubi/git-coure/.github/actions/config@master
 
       - name: Check out the repo
