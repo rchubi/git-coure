@@ -38,7 +38,7 @@ jobs:
 
       - name: Assign var
         run:
-          echo "::set-output name=var_environment::${{environment}}"
+          echo "::set-output name=var_environment::${{inputs.environment}}"
 
 
       - name: Build the Docker image
