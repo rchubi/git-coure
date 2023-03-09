@@ -27,7 +27,7 @@ jobs:
 
     steps:
       - name: Get config
-        uses: git-coure/.github/actions/config@master
+        uses: rchubi/git-coure/.github/actions/config@master
 
       - name: Check out the repo
         uses: actions/checkout@v3
@@ -40,6 +40,6 @@ jobs:
 
       - name: Take variables
         id: take_variables
-        uses: git-coure/.github/actions/another@master
+        uses: rchubi/git-coure/.github/actions/another@master
         with:
           ecs-cluster: ${{ steps.config.outputs.ecs-cluster-dev }}
