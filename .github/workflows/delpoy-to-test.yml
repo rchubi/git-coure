@@ -39,9 +39,9 @@ jobs:
         id: config
         uses: rchubi/git-coure/.github/actions/config@master
         env:
-          environ: ${ inputs.environment }
+          environ: ${{ inputs.environment }}
           cluster_env: ecs-cluster-${ github.event.inputs.environment }
 
       - name: Print result
-        run: my_var =  ${ inputs.environment }
+        run: my_var =  ${{ vars.environment }}
           echo "ecs-cluster - ${{ steps.config.outputs.cluster_env }}"
