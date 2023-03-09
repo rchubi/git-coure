@@ -16,7 +16,7 @@ outputs:
     value: 'Intelligo-Production'
 
 runs:
-  using: composite
+  using: "composite"
   steps:
     - run: echo "Initializng configs"
       shell: bash
