@@ -37,14 +37,15 @@ jobs:
 
 
       - name: Assign var
+        id: av
         run:
-          echo "::set-output name=var_environment::${{inputs.environment}}"
+          echo "::set-output name=var_environment::var_env-${{inputs.environment}}"
 
 
       - name: Build the Docker image
         id: build-image
         env:
-          var:  $var_environment
+          var:  ${{ steps.av.outputs.var_environment }}
         run: docker build . --file Dockerfile -t bogggard/hello-world:$(date +%s)-${{ inputs.environment }} -t bogggard/hello-world:latest -t bogggard/hello-world:$var
 
       - name: Push to Docker Hub
