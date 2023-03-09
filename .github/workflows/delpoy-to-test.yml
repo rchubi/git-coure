@@ -46,4 +46,4 @@ jobs:
 
       - name: Result
         run:
-          echo " $ecs-cluster
+          echo "Result - $ecs-cluster"
