@@ -43,7 +43,3 @@ jobs:
         uses: git-coure/.github/actions/another/action.yml
         with:
           ecs-cluster: ${{ steps.config.outputs.ecs-cluster-dev }}
-
-      - name: Result
-        run:
-          echo "Result - $ecs-cluster"
