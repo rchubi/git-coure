@@ -43,6 +43,6 @@ jobs:
         id: take_variables
         uses: rchubi/git-coure/.github/actions/check-test@master
         with:
-          ecs-cluster: ${{ steps.config.outputs.ecs-cluster-dev }}
+          ecs-cluster: ${{ steps.config.outputs.ecs-cluster-${{ inputs.environment }} }}
           aws-access-key-id: ${{ secrets.DOCKER_USERNAME }}
           aws-secret-access-key: ${{ secrets.DOCKER_PASSWORD }}
