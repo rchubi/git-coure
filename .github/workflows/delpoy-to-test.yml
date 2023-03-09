@@ -35,3 +35,14 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Get config
+        id: config
+        uses: rchubi/git-coure/.github/actions/config@master
+
+      - name: Take variables
+        id: take_variables
+        uses: rchubi/git-coure/.github/actions/check-test@master
+        with:
+          ecs-cluster: ${{ steps.config.outputs.ecs-cluster-dev }}
+          aws-access-key-id: ${{ secrets.DOCKER_USERNAME }}
+          aws-secret-access-key: ${{ secrets.DOCKER_PASSWORD }}
