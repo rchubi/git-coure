@@ -40,8 +40,8 @@ jobs:
         uses: rchubi/git-coure/.github/actions/config@master
         env:
           environ: ${{ inputs.environment }}
-          cluster_env: ecs-cluster-${{ inputs.environment }}
+          cluster_env: ecs-cluster-${{ github.event.inputs.environment }}
 
       - name: Print result
-        run: echo "environ - ${{ env.environ }}" |
+        run: echo ${{ env.environ }} |
           echo "ecs-cluster - ${{ steps.config.outputs.cluster_env }}"
