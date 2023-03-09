@@ -24,5 +24,5 @@ runs:
          password: ${{ secrets.DOCKER_PASSWORD }}
 
      - name: Result
-       run: echo "Result - $ecs-cluster"
+       run: echo "Result - ${{ inputs.ecs-cluster }}"
        shell: bash

@@ -40,6 +40,6 @@ jobs:
 
       - name: Take variables
         id: take_variables
-        uses: rchubi/git-coure/.github/actions/another@master
+        uses: rchubi/git-coure/.github/actions/check-test@master
         with:
           ecs-cluster: ${{ steps.config.outputs.ecs-cluster-dev }}
