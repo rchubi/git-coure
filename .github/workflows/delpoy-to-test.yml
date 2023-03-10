@@ -38,14 +38,11 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Get config
-        id: config
+        id: configs
         uses: rchubi/git-coure/.github/actions/config@master
-        env:
-          environ: ${{ inputs.environment }}
-          cluster_env: ${{ inputs.environment }}
+
 
       - name: Print result
         run: |
-          echo "::set-output name=qwe::${{ steps.config.outputs.ecs-cluster-${{ inputs.environment }} }}" |
-          echo "ecs-cluster - ${{ steps.config.outputs.ecs-cluster-${{ inputs.environment }} }}" |
-          echo $qwe
+          echo "${{ format('steps.configs.outputs.ecs-cluster-{0}', inputs.environment) }}" 
+          echo "${{ steps.configs.outputs.ecs-cluster-dev }}" 
