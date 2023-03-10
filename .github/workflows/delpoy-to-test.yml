@@ -44,7 +44,7 @@ jobs:
 
       - name: Print result
         env:
-          test: ${{ format('steps.configs.outputs.ecs-cluster-{0}', inputs.environment) }}
+          test: ${{ steps.configs.outputs.format('ecs-cluster-{0}', inputs.environment) }}
         run: |
           echo ${{ env.test }}
           echo "${{ steps.configs.outputs.ecs-cluster-dev }}" 
