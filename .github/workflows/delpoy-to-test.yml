@@ -45,6 +45,6 @@ jobs:
           cluster_env: ${{ inputs.environment }}
 
       - name: Print result
-        run: my_var=${{ vars.environ }} |
+        run: |
           echo "ecs-cluster - ${{ steps.config.outputs.ecs-cluster-dev }}" |
           echo ${{ inputs.environment }}
