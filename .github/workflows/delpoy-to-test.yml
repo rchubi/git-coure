@@ -46,5 +46,6 @@ jobs:
 
       - name: Print result
         run: |
+          echo "::set-output name=qwe::${{ steps.config.outputs.ecs-cluster-${{ inputs.environment }} }}" |
           echo "ecs-cluster - ${{ steps.config.outputs.ecs-cluster-${{ inputs.environment }} }}" |
-          echo ${{ inputs.environment }}
+          echo $qwe
