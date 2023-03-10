@@ -43,5 +43,6 @@ jobs:
           cluster_env: ecs-cluster-${ github.event.inputs.environment }
 
       - name: Print result
-        run: my_var =  ${{ vars.environment }}
+        run: my_var=${{ vars.environ }}
           echo "ecs-cluster - ${{ steps.config.outputs.cluster_env }}"
+          echo $environ $my_var
