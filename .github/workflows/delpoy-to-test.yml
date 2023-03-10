@@ -24,6 +24,8 @@ jobs:
     name: Deploy image to Docker Hub
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
+    env:
+      MY_MAP: '{"dev":"map_dev", "qa":"map_qa", "staging":"map_stage"}'
 
     steps:
       - name: Check out the repo
@@ -40,9 +42,9 @@ jobs:
         uses: rchubi/git-coure/.github/actions/config@master
         env:
           environ: ${{ inputs.environment }}
-          cluster_env: ecs-cluster-${ github.event.inputs.environment }
+          cluster_env: ${{ inputs.environment }}
 
       - name: Print result
-        run: my_var=${{ vars.environ }}
-          echo "ecs-cluster - ${{ steps.config.outputs.cluster_env }}"
+        run: my_var=${{ vars.environ }} |
+          echo "ecs-cluster - ${{ steps.config.outputs.cluster_env }}" |
           echo $environ $my_var
