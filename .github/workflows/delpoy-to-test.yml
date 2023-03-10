@@ -37,15 +37,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-        env:
-          environ: ${{ inputs.environment }}
-          cluster_env: ${{ inputs.environment }}
-
-      - name: Get config
-        id: config
-        uses: rchubi/git-coure/.github/actions/config@master
 
       - name: Print result
-        run: my_var=${{ vars.environ }} |
-          echo "ecs-cluster - ${{ steps.login.outputs.cluster_env }}" |
-          echo ${{ steps.login.outputs.environ}}
+        run: echo "ecs-cluster - ${{ inputs.environment }}"
