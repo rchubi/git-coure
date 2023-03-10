@@ -46,5 +46,5 @@ jobs:
 
       - name: Print result
         run: |
-          echo "ecs-cluster - ${{ steps.config.outputs.ecs-cluster-dev }}" |
+          echo "ecs-cluster - ${{ steps.config.outputs.ecs-cluster-${{ inputs.environment }} }}" |
           echo ${{ inputs.environment }}
