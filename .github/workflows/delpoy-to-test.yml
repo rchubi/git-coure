@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: qa
 
-    step:
+    steps:
       - name: Check out the repo
         uses: actions/checkout@v3
 
