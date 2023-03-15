@@ -1,0 +1,33 @@
+name: Deployment to Environments
+
+on:
+  workflow_dispatch:
+    inputs:
+      var_all:
+        description: 'Release number (image tag) (i.e., v.6.0)'
+        required: true
+        type: string
+
+      var_dev:
+        description: 'Environment'
+        required: true
+        type: string
+
+jobs:
+  print:
+    name: End print
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.var_all }}
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Print result
+        id: print_result
+        env:
+          var_all: ${{ steps.configs.outputs[format('ecs-cluster-{0}', inputs.environment)] }}
+          var_dev: ${{ steps.configs.outputs.ecs-cluster-dev }}
+        run: |
+          echo ${{ inputs.var_all }}
+          echo ${{ inputs.var_var }}
