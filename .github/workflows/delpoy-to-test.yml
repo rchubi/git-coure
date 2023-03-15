@@ -39,6 +39,9 @@ jobs:
         uses: rchubi/git-coure/.github/actions/config@master
 
   deploy_qa:
+    name: Deploy qa Deploy test
+    needs: deploy
+    runs-on: ubuntu-latest
     environment: qa
 
     step:
