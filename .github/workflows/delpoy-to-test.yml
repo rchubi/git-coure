@@ -39,7 +39,14 @@ jobs:
         uses: rchubi/git-coure/.github/actions/config@master
 
   deploy_qa:
-    uses: rchubi/git-coure/.github/workflows/end.yml@master
-    with:
-      var_env: ${{ steps.configs.outputs[format('ecs-cluster-{0}', inputs.environment)] }}
-      var_tag: ${{ steps.configs.outputs.ecs-cluster-dev }}
+    environment: qa
+
+    step:
+      - name: Print result
+        id: print_result
+        env:
+          var_all: ${{ steps.configs.outputs[format('ecs-cluster-{0}', inputs.var_env)] }}
+          var_dev: ${{ steps.configs.outputs.ecs-cluster-dev }}
+        run: |
+          echo ${{ inputs.var_all }}
+          echo ${{ inputs.var_dev }}
