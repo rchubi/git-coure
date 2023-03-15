@@ -42,10 +42,17 @@ jobs:
     environment: qa
 
     step:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Get config
+        id: configs
+        uses: rchubi/git-coure/.github/actions/config@master
+
       - name: Print result
         id: print_result
         env:
-          var_all: ${{ steps.configs.outputs[format('ecs-cluster-{0}', inputs.var_env)] }}
+          var_all: ${{ steps.configs.outputs[format('ecs-cluster-{0}', inputs.environment)] }}
           var_dev: ${{ steps.configs.outputs.ecs-cluster-dev }}
         run: |
           echo ${{ inputs.var_all }}
