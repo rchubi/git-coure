@@ -39,13 +39,6 @@ jobs:
         id: configs
         uses: rchubi/git-coure/.github/actions/config@master
 
-      - name: try_other_file
-        id: tof
-        uses: rchubi/git-coure/.github/workflows/deploy-to-test.yml@master
-        with:
-          release_number: ${{ inputs.release_number }}
-          environment: ${{ inputs.environment }}
-
       - name: Build the Docker image
         id: build-image
         env:

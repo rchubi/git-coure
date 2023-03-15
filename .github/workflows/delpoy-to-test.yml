@@ -17,7 +17,6 @@ on:
           - dev
           - qa
           - staging
-          - USERNAME
 
 jobs:
   deploy:
@@ -39,10 +38,8 @@ jobs:
         id: configs
         uses: rchubi/git-coure/.github/actions/config@master
 
-
-      - name: Print result
-        id: print_result
-        uses: rchubi/git-coure/.github/workflows/end.yml@master
-        env:
-          var_all: ${{ steps.configs.outputs[format('ecs-cluster-{0}', inputs.environment)] }}
-          var_dev: ${{ steps.configs.outputs.ecs-cluster-dev }}
+  deploy_qa:
+    uses: rchubi/git-coure/.github/workflows/end.yml@master
+    with:
+      var_env: ${{ steps.configs.outputs[format('ecs-cluster-{0}', inputs.environment)] }}
+      var_tag: ${{ steps.configs.outputs.ecs-cluster-dev }}
