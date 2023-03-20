@@ -43,7 +43,7 @@ jobs:
         id: build-image
         env:
           var:  ${{ steps.av.outputs.var_environment }}
-        run: docker build . --file Dockerfile -t bogggard/hello-world:$(date +%s)-${{ inputs.environment }} -t bogggard/hello-world:latest -t bogggard/hello-world:$var
+        run: docker build . --file Dockerfile -t bogggard/hello-world:$(date +%s)-${{ inputs.environment }} -t bogggard/hello-world:latest
 
       - name: Push to Docker Hub
         id: push-image
