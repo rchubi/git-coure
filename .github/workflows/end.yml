@@ -46,5 +46,5 @@ jobs:
           var_all: ${{ steps.configs.outputs[format('ecs-cluster-{0}', inputs.var_env)] }}
           var_dev: ${{ steps.configs.outputs.ecs-cluster-dev }}
         run: |
-          echo ${{ inputs.var_all }}
-          echo ${{ inputs.var_dev }}
+          echo ${{ inputs.var_tag }}
+          echo ${{ inputs.var_env }}
