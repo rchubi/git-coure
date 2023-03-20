@@ -2,6 +2,16 @@ name: End print
 
 on:
   workflow_call:
+    inputs:
+      var_tag:
+        description: 'Release number (image tag) (i.e., v.6.0)'
+        required: true
+        type: string
+
+      var_env:
+        description: 'Environment'
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
       var_tag:
