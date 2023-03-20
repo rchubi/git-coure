@@ -1,6 +1,7 @@
 name: End print
 
 on:
+  workflow_call:
   workflow_dispatch:
     inputs:
       var_tag:
@@ -11,7 +12,13 @@ on:
       var_env:
         description: 'Environment'
         required: true
-        type: string
+        type: choice
+        default: dev
+        options:
+          - dev
+          - qa
+          - staging
+          - USERNAME
 
 jobs:
   print:

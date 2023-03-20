@@ -48,3 +48,12 @@ jobs:
       - name: Push to Docker Hub
         id: push-image
         run: docker push --all-tags bogggard/hello-world
+
+  metano_deploy_qa:
+    name: Deploy Meltano to QA
+    needs: deploy
+
+    uses: Elligo/intelligo-meltano/.github/workflows/end.yml@master
+    with:
+      var_env: qa
+      var_tag: ${{ inputs.release_number }}
