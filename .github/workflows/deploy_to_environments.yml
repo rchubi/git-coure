@@ -53,7 +53,7 @@ jobs:
     name: Deploy Meltano to QA
     needs: deploy
 
-    uses: Elligo/intelligo-meltano/.github/workflows/end.yml@master
+    uses: rchubi/git-coure/.github/workflows/end.yml@master
     with:
       var_env: qa
       var_tag: ${{ inputs.release_number }}
