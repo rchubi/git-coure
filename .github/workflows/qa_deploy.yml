@@ -1,6 +1,8 @@
 name: QA Deployment
 
 on:
+  schedule:
+    - cron: '*/10 * * * *'
   workflow_dispatch:
     inputs:
       release_number:
@@ -38,8 +40,7 @@ jobs:
         run: |
           #!/bin/bash
           echo ${{ github.event_name }}
-          fi
-            if [ "${{ github.event_name }}" == "schedule" ]; then
+          if [ "${{ github.event_name }}" == "schedule" ]; then
             echo "::set-output name=who_run::Schedule"
           else
           echo "::set-output name=who_run::${{ github.actor }}"
