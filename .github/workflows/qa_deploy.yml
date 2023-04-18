@@ -1,8 +1,6 @@
 name: QA Deployment
 
 on:
-  schedule:
-    - cron: "*/10 * * * *"
   workflow_dispatch:
     inputs:
       release_number:
@@ -34,3 +32,11 @@ jobs:
       - name: Push to Docker Hub
         id: push-image
         run: docker push bogggard/hello-world:qa
+
+      - name: Notify Slack of UI test results
+        id: notify_slack_ui_test
+        uses: rchubi/git-coure/.github/actions/notification-to-slack@maste
+        if: ${{ always() }}
+        with:
+          text_message: UI test result
+          secret_slack_bot_token: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
