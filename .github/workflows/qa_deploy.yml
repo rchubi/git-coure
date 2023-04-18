@@ -9,6 +9,7 @@ on:
         description: 'Release number (image tag) (i.e., v.6.0)'
         required: true
         type: string
+        default: 1
 
 jobs:
   release_depploy_qa:
