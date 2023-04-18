@@ -1,8 +1,6 @@
 name: QA Deployment
 
 on:
-  schedule:
-    - cron: "*/10 * * * *"
   workflow_dispatch:
     inputs:
       release_number:
