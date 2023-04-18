@@ -32,3 +32,15 @@ jobs:
       - name: Push to Docker Hub
         id: push-image
         run: docker push bogggard/hello-world:qa
+
+      - name: print
+        id: print
+        run: |
+          #!/bin/bash
+          echo ${{ github.event_name }}
+          fi
+            if [ "${{ github.event_name }}" == "schedule" ]; then
+            echo "::set-output name=who_run::Schedule"
+          else
+          echo "::set-output name=who_run::${{ github.actor }}"
+          fi
