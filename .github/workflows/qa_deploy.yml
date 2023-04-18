@@ -1,12 +1,15 @@
 name: QA Deployment
 
 on:
+  schedule:
+    - cron: "*/10 * * * *"
   workflow_dispatch:
     inputs:
       release_number:
         description: 'Release number (image tag) (i.e., v.6.0)'
         required: true
         type: string
+        default: 1
 
 jobs:
   release_depploy_qa:
